@@ -3,9 +3,9 @@
 Build the complete client with `make app` (equivalent to `make PYROWAVE=1 app`).
 `make PYROWAVE=0 app` excludes RADV and preserves a VideoDec2-only build.
 PyroWave is selected explicitly in Settings; there is no automatic codec override.
-All seven codec/range/chroma profiles were confirmed working by the console
-reviewer after the HDR packing and AGC initialization fixes. The validation
-report separates these results from untested resolution/bitrate combinations.
+The seven codec/range/chroma profiles were previously confirmed on console; the
+Foundation Sunshine decoder pin update still needs console regression before
+release. The validation report separates tested and untested combinations.
 
 ## Settings and profiles
 
@@ -40,15 +40,16 @@ are excluded; upstream H.264/HEVC IDR-drop behavior is retained.
 
 Each PyroWave profile requires its exact host capability bit. Only its single
 VIDEO_FORMAT is offered. An absent or unknown DESCRIBE bitstream ID is an error,
-not a fallback or warning. The decoder revision remains
-`186f0393b77f7755953b5ecde994bb1cec2e4155` (ID `186f0393`). The check also accepts
-`c0b997f8` (punktfunk's vendored revision): the commits between the two touch only
-the Metal backend, the C API and build files, not shaders or bitstream code.
+not a fallback or warning. The decoder now uses Foundation Sunshine's exact
+PyroWave revision `cc91cbf6363721d19d135d05ca8e3d8665ea6afd` (ID `cc91cbf6`)
+and matching Granite revision `fd1c9f6652e708fdc52773883c60b58ee3f80855`.
+Only this host bitstream ID is accepted.
 
 ANNOUNCE uses bitStreamFormat=3, stock chroma/dynamic-range attributes,
 pyrowaveAdaptiveFec=0, pyrowaveAdaptiveBitrate=0 and pyrowaveFeatures=1.
-Compression stays disabled. Sequence code 1 and other non-independent frames are
-rejected. H.264/HEVC are manually available on ordinary Sunshine hosts.
+Compression stays disabled. The host fork also defines a negotiated HLG sequence
+code; this client supports SDR/HDR10 only and rejects unsupported sequence codes.
+H.264/HEVC are manually available on ordinary Sunshine hosts.
 
 Pinned PyroWave, Granite, Volk, Vulkan-Headers, PS5_Vulkan, PS5_Mesa and public
 PayloadSDK revisions live in `tools/pyrowave/pins.sh`. RADV patches cover startup

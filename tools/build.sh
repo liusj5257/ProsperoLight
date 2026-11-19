@@ -426,6 +426,8 @@ cp "$root/third_party/moonlight-common-c/LICENSE.txt" "$app/licenses/moonlight-c
 if [[ ${PYROWAVE:-0} == 1 ]]; then
     cp "$root/src/pyrowave/LICENSE-MIT.txt" "$app/licenses/PS5-PyroWave-PoC-MIT.txt"
     cp "$root/.deps/pyrowave/pyrowave/LICENSE" "$app/licenses/PyroWave-MIT.txt"
+    cp "$root/.deps/pyrowave/pyrowave/LICENSES/GPL-3.0-only.txt" "$app/licenses/PyroWave-GPL-3.0-only.txt"
+    cp "$root/.deps/pyrowave/pyrowave/NOTICE.md" "$app/licenses/PyroWave-NOTICE.md"
     cp "$root/.deps/pyrowave/Granite/LICENSE" "$app/licenses/Granite-MIT.txt"
     cp "$root/.deps/pyrowave/Granite/third_party/volk/LICENSE.md" "$app/licenses/Volk-MIT.txt"
     cp "$root/.deps/pyrowave/Granite/third_party/khronos/vulkan-headers/LICENSE.md" "$app/licenses/Vulkan-Headers-LICENSE.md"

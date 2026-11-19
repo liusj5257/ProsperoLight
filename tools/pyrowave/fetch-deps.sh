@@ -19,8 +19,8 @@ fetch() {
         echo "wrong revision in $directory; move the checkout aside and rerun" >&2; exit 2;
     }
 }
-fetch pyrowave https://github.com/Themaister/pyrowave.git "$PYROWAVE_REV"
-fetch Granite https://github.com/Themaister/Granite.git "$GRANITE_REV"
+fetch pyrowave https://github.com/AlkaidLab/pyrowave.git "$PYROWAVE_REV"
+fetch Granite https://github.com/AlkaidLab/Granite.git "$GRANITE_REV"
 git -C "$root/.deps/pyrowave/Granite" submodule update --init third_party/volk third_party/khronos/vulkan-headers
 [[ $(git -C "$root/.deps/pyrowave/Granite/third_party/volk" rev-parse HEAD) == "$VOLK_REV" ]]
 [[ $(git -C "$root/.deps/pyrowave/Granite/third_party/khronos/vulkan-headers" rev-parse HEAD) == "$HEADERS_REV" ]]

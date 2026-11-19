@@ -173,8 +173,8 @@ Linked into the default build (`PYROWAVE=1`); `make PYROWAVE=0 app` leaves it ou
 licence texts of PyroWave, Granite, Volk, the Vulkan headers and Mesa are copied into the
 app's `licenses/` folder when it is built.
 
-- PyroWave: Themaister/pyrowave, Copyright (c) 2025 Hans-Kristian Arntzen, MIT, pinned to 186f0393b77f7755953b5ecde994bb1cec2e4155.
-- Granite: Themaister/Granite, Copyright (c) 2017-2026 Hans-Kristian Arntzen, MIT, pinned to b6cffd5ce81f540f0855e6778428483e14763d9b.
+- PyroWave: AlkaidLab/pyrowave, pinned to cc91cbf6363721d19d135d05ca8e3d8665ea6afd. Upstream PyroWave by Hans-Kristian Arntzen is MIT; AlkaidLab's changes are GPL-3.0-only. Both license texts and the fork notice ship with the app.
+- Granite: AlkaidLab/Granite, Copyright (c) 2017-2026 Hans-Kristian Arntzen, MIT, pinned to fd1c9f6652e708fdc52773883c60b58ee3f80855.
 - Volk: zeux/volk, Copyright (c) 2018-2026 Arseny Kapoulkine, MIT; Vulkan-Headers: KhronosGroup/Vulkan-Headers, The Khronos Group Inc., Apache-2.0 OR MIT.
 - RADV/Mesa: Mihawk-99/PS5_Mesa, the Mesa 26.2.0 release with a PS5 winsys; Mesa's own licences (MIT for the parts linked here; `docs/license.rst` in that tree), Copyright (C) the Mesa authors.
 - PS5 build/link integration: Mihawk-99/PS5_Vulkan, GPL-3.0-or-later.

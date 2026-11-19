@@ -36,7 +36,7 @@ prepare_pyrowave_build() {
     cmake -S "$root/tools/pyrowave" -B "$root/build/pyrowave" -G Ninja \
         -DDEPS_ROOT="$deps" -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_TOOLCHAIN_FILE="$root/tools/pyrowave/toolchain.cmake" "${launcher[@]}"
-    cmake --build "$root/build/pyrowave" --target pyrowave-c -j "${BUILD_JOBS:-4}"
+    cmake --build "$root/build/pyrowave" --target pyrowave-c-api-static -j "${BUILD_JOBS:-4}"
     mapfile -t pyrowave_archives < "$root/build/pyrowave/archives.txt"
     pyrowave_cflags=("-I$deps/pyrowave" "-I$deps/Granite/third_party/volk" \
         "-I$deps/Granite/third_party/khronos/vulkan-headers/include")

@@ -6,7 +6,7 @@
 #include <cstring>
 #include <string>
 #include <vector>
-constexpr const char *PYRO_COMMIT = "186f0393b77f7755953b5ecde994bb1cec2e4155";
+constexpr const char *PYRO_COMMIT = "cc91cbf6363721d19d135d05ca8e3d8665ea6afd";
 #if defined(__GNUC__) || defined(__clang__)
 __attribute__((format(printf, 1, 2)))
 #endif
