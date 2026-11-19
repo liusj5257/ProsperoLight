@@ -7,6 +7,17 @@ prepare_pyrowave_build() {
     export PS5_VULKAN_ROOT="$deps/PS5_Vulkan"
     export PS5_PAYLOAD_SDK="$PS5_VULKAN_ROOT/.deps/native/ps5-payload-sdk"
     export PS5_MESA_FORK="$deps/PS5_Mesa" PS5_PAYLOADSDK_FORK="$deps/PS5_PayloadSDK"
+    local zlib_version=1.3.2
+    local zlib_sha256=bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16
+    local zlib_archive="$root/.deps/native/zlib/zlib-$zlib_version.tar.gz"
+    local radv_zlib_archive="$PS5_VULKAN_ROOT/.deps/native/zlib/zlib-$zlib_version.tar.gz"
+    [[ -f $zlib_archive ]] || bash "$root/tools/setup-native-dependencies.sh" --skip-sdk >/dev/null
+    printf '%s  %s\n' "$zlib_sha256" "$zlib_archive" | sha256sum --check --strict >/dev/null || {
+        echo "the shared zlib $zlib_version archive failed SHA-256 verification" >&2
+        exit 2
+    }
+    mkdir -p "$(dirname "$radv_zlib_archive")"
+    cp "$zlib_archive" "$radv_zlib_archive"
     bash "$PS5_VULKAN_ROOT/tools/setup-native-dependencies.sh"
     # With USE_CCACHE=1 the RADV and PyroWave compiles go through ccache.
     # Clear persisted CMake launchers when caching is disabled on a reused build tree.
